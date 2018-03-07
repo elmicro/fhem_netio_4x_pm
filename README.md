@@ -56,8 +56,8 @@ Enter in the FHEM commandline or submit via FHEM WebGUI/Tablet-UI:
 You can `get` all the available info from the device and update the readings.
 
 * device readings
-  * **OutputX_State** - state of each output (0=off, 1=on)
-  * **OutputX_Delay** - the delay which is used for short off/on (`command` `2` and `3`) in ms for each output  
+  * **OutputX_State** - state of each output (0=off, 1=on)  
+  * **OutputX_Delay** - the delay which is used for short off/on (`command` `2` and `3`) in ms for each output  
 *Netio-Devices of the `DeviceModel` `4All` also submit the following readings:*
   * **OutputX_Current** - the current drawn from each outlet (in mA)
   * **OutputX_Energy** - the energy consumed by each outlet since the time given in the **EnergyStart** reading (in Wh)
