@@ -4,19 +4,19 @@
     <!--
      /* Tablet-UI configuration for NETIO_4x FHEM module
      /* https://github.com/elmicro/fhem_netio_4x_pm/www/tablet/index.html
-     /*
      *
-     * Example Tablet-UI configuration page for usgae with a NETIO 4All device.
-     * Gets all the reading by clicking on the refresh icon, sets output on/off by clicking on the corresponding power icon.
+     * Example Tablet-UI configuration page for usage with a NETIO 4All networked power socket
+     * - get readings by clicking the refresh icon
+     * - set outputs on/off by clicking the corresponding power icon
      * 
-     * To use this file, place it in /www/tablet/ in your FHEM folder or add the contents of the body elemtent to the 
-     * index.html file of your Tablet-UI installation.
+     * Install this file by replacing <FHEM-DIR>/www/tablet/index.html
      *
-     * For infos on how to install Tablet-UI see: https://wiki.fhem.de/wiki/FHEM_Tablet_UI#Installation
+     * For information on how to install Tablet-UI see: https://wiki.fhem.de/wiki/FHEM_Tablet_UI#Installation
+     * The Tablet-UI project repository is located at: https://github.com/knowthelist/fhem-tablet-ui
      * 
      */
     -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="widget_base_width" content="116">
     <meta name="widget_base_height" content="131">
     <meta name="mobile-web-app-capable" content="yes">
@@ -25,14 +25,14 @@
     <meta name="longpoll" content="1"> <!-- 1=longpoll;0=shortpoll every 30sec -->
     <meta name="debug" content="0"> <!-- 1=output to console;0=no output -->
 
-    <link rel="stylesheet" href="/fhem/tablet/lib/jquery.gridster.min.css" />
-    <link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui.css" />
-    <link rel="stylesheet" href="/fhem/tablet/lib/font-awesome.min.css" />
-    <link rel="stylesheet" href="/fhem/tablet/lib/jquery.toast.min.css" />
+    <link rel="stylesheet" href="/fhem/tablet/lib/jquery.gridster.min.css">
+    <link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui.css">
+    <link rel="stylesheet" href="/fhem/tablet/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/fhem/tablet/lib/jquery.toast.min.css">
 
     <!-- define your personal style here, it wont be overwritten  -->
-    <!-- link rel="stylesheet" href="/fhem/tablet/css/fhem-green-ui.css" / -->
-    <link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui-user.css" />
+    <!-- link rel="stylesheet" href="/fhem/tablet/css/fhem-green-ui.css" -->
+    <link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui-user.css">
 
     <script src="/fhem/pgm2/jquery.min.js" defer></script>
     <script src="/fhem/tablet/lib/jquery.toast.min.js" defer></script>
@@ -51,53 +51,53 @@
 
 <div class="gridster">
 <ul>
-  <li data-row="2" data-col="1" data-sizex="5" data-sizey="3">
-  		<header>Server-Rack</header>
-      <div data-type="label" data-device="DeviceName" data-get='TotalCurrent' data-pre-text='Current ' data-unit=' mA' class="left cell large"></div>
-      <div data-type="label" data-device="DeviceName" data-get='TotalLoad' data-pre-text='Load ' data-unit=' W' class="left cell large"></div>
-      <div data-type="label" data-device="DeviceName" data-get='TotalEnergy' data-pre-text='Energy ' data-unit=' Wh' class="left cell large"></div>
-      <div data-type="label" data-device="DeviceName" data-get='Frequency' data-pre-text='Frequency ' data-unit=' Hz' class="left cell large"></div>
-      <div data-type="label" data-device="DeviceName" data-get='Voltage' data-pre-text='Voltage ' data-unit=' V' class="left cell large"></div>
-      <div data-type="label" data-device="DeviceName" data-get='OverallPowerFactor' data-pre-text='PF '  class="left cell large"></div>
-  		<div class="cell inline">
-        <div data-type="label" class="large bold">1</div>
-  			<div data-type="switch" data-device="DeviceName" class="cell" data-icon="fa-power-off" data-set="1" data-get="Output1_State" data-get-on="1" data-get-off="0"></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output1_Current' data-pre-text='Current ' data-unit=' mA' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output1_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output1_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output1_PowerFactor' data-pre-text='PF ' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output1_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
-  		</div>
-      <div class="cell inline">
-        <div data-type="label" class="large bold">2</div>
-  			<div data-type="switch" data-device="DeviceName" class="cell" data-icon="fa-power-off" data-set="2" data-get="Output2_State" data-get-on="1" data-get-off="0"></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output2_Current' data-pre-text='Current ' data-unit=' mA' class="cell"></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output2_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output2_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output2_PowerFactor' data-pre-text='PF ' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output2_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
-  		</div>
-      <div class="cell inline">
-        <div data-type="label" class="large bold">3</div>
-  			<div data-type="switch" data-device="DeviceName" class="cell" data-icon="fa-power-off" data-set="3" data-get="Output3_State" data-get-on="1" data-get-off="0"></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output3_Current' data-pre-text='Current ' data-unit=' mA' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output3_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output3_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output3_PowerFactor' data-pre-text='PF ' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output3_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
-  		</div>
-      <div class="cell inline">
-        <div data-type="label" class="large bold">4</div>
-  			<div data-type="switch" data-device="DeviceName" class="cell" data-icon="fa-power-off" data-set="4" data-get="Output4_State" data-get-on="1" data-get-off="0"></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output4_Current' data-pre-text='Current ' data-unit=' mA' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output4_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output4_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output4_PowerFactor' data-pre-text='PF ' class="cell "></div>
-        <div data-type="label" data-device="DeviceName" data-get='Output4_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
-  		</div>
-      <div data-type="label" data-device="DeviceName" data-get='EnergyStart' data-pre-text='EnergyStart ' class="left cell"></div>
-      <div data-type="push" data-device="DeviceName" data-icon="fa-refresh" data-cmd="get" data-set="state" data-set-on="&nbsp;" class="right"></div>
-  </li>
+    <li data-row="2" data-col="1" data-sizex="5" data-sizey="3">
+        <header>MyNetio4All</header>
+        <div data-type="label" data-device="MyNetio4All" data-get='TotalCurrent' data-pre-text='Current ' data-unit=' mA' class="left cell large"></div>
+        <div data-type="label" data-device="MyNetio4All" data-get='TotalLoad' data-pre-text='Load ' data-unit=' W' class="left cell large"></div>
+        <div data-type="label" data-device="MyNetio4All" data-get='TotalEnergy' data-pre-text='Energy ' data-unit=' Wh' class="left cell large"></div>
+        <div data-type="label" data-device="MyNetio4All" data-get='Frequency' data-pre-text='Frequency ' data-unit=' Hz' class="left cell large"></div>
+        <div data-type="label" data-device="MyNetio4All" data-get='Voltage' data-pre-text='Voltage ' data-unit=' V' class="left cell large"></div>
+        <div data-type="label" data-device="MyNetio4All" data-get='OverallPowerFactor' data-pre-text='PF '  class="left cell large"></div>
+        <div class="cell inline">
+            <div data-type="label" class="large bold">1</div>
+            <div data-type="switch" data-device="MyNetio4All" class="cell" data-icon="fa-power-off" data-set="1" data-get="Output1_State" data-get-on="1" data-get-off="0"></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output1_Current' data-pre-text='Current ' data-unit=' mA' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output1_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output1_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output1_PowerFactor' data-pre-text='PF ' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output1_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
+        </div>
+        <div class="cell inline">
+            <div data-type="label" class="large bold">2</div>
+            <div data-type="switch" data-device="MyNetio4All" class="cell" data-icon="fa-power-off" data-set="2" data-get="Output2_State" data-get-on="1" data-get-off="0"></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output2_Current' data-pre-text='Current ' data-unit=' mA' class="cell"></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output2_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output2_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output2_PowerFactor' data-pre-text='PF ' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output2_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
+        </div>
+        <div class="cell inline">
+            <div data-type="label" class="large bold">3</div>
+            <div data-type="switch" data-device="MyNetio4All" class="cell" data-icon="fa-power-off" data-set="3" data-get="Output3_State" data-get-on="1" data-get-off="0"></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output3_Current' data-pre-text='Current ' data-unit=' mA' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output3_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output3_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output3_PowerFactor' data-pre-text='PF ' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output3_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
+        </div>
+        <div class="cell inline">
+            <div data-type="label" class="large bold">4</div>
+            <div data-type="switch" data-device="MyNetio4All" class="cell" data-icon="fa-power-off" data-set="4" data-get="Output4_State" data-get-on="1" data-get-off="0"></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output4_Current' data-pre-text='Current ' data-unit=' mA' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output4_Load' data-pre-text='Load ' data-unit=' W' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output4_Energy' data-pre-text='Energy ' data-unit=' Wh' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output4_PowerFactor' data-pre-text='PF ' class="cell "></div>
+            <div data-type="label" data-device="MyNetio4All" data-get='Output4_Delay' data-pre-text='Delay ' data-unit=' ms' class="cell "></div>
+        </div>
+        <div data-type="label" data-device="MyNetio4All" data-get='EnergyStart' data-pre-text='EnergyStart ' class="left cell"></div>
+        <div data-type="push" data-device="MyNetio4All" data-icon="fa-refresh" data-cmd="get" data-set="state" data-set-on="&nbsp;" class="right"></div>
+    </li>
 </ul>
 </div>
 </body>
