@@ -1,7 +1,9 @@
-##############################################
+#
 # $Id: 24_NETIO_4x.pm 7570 2018-02-18 15:15:44Z oliverschoenefeld $
 #
-# maintainer: Elektronikladen Microcomputer ELMICRO GmbH & Co. KG, fhem@elmicro.com
+# for installation/usage instructions please see
+# https://github.com/elmicro/fhem_netio_4x_pm
+# maintainer: Elektronikladen Microcomputer - fhem@elmicro.com
 #
 
 package main;
@@ -46,7 +48,7 @@ NETIO_4x_Define($$)
   }
   else
   {
-    return "Please provide the connection details in the following format:\n\nhttp://user:password\@HOST:PORT\nHTTPS is not supported\nuser:password\@ may be ommitted if no basicAuth is used\nHOST can be provided as an IPv4 address or host/domain\nif port is ommited, default port 80 is used\n\ni.e. \nhttp://10.10.10.1 or\n http://mynetio.example.domain or\nhttp://bob:bobspwd\@10.10.10.1:80";
+    return "Please provide the connection details in the following format:\n\nhttp://user:password\@HOST:PORT\nHTTPS is not implemented yet\nuser:password\@ may be omitted if no basicAuth is used\nHOST can be provided as an IPv4 address or host/domain\nif port is omitted, default port 80 is used\n\ne.g. \nhttp://10.10.10.1 or\n http://mynetio.example.domain or\nhttp://bob:bobspwd\@10.10.10.1:80";
   }
   return undef;
 }
@@ -207,59 +209,61 @@ NETIO_4x_Get(@)
 
 =pod
 
-=item summary controls the network-enabled power-outles of the NETIO_4x series via the JSON M2M API
+=item summary Control NETIO 4/4All/4C Networked Power Sockets via Ethernet or WiFi using JSON M2M-API
 
 =begin html
 
 <a name="NETIO_4x"></a>
 <h3>NETIO_4x</h3>
 <ul>
-    <i>NETIO_4x</i> provides communication with NETIO_4x devices via the JSON M2M API. The API needs to be turned on in the device settings prior to defining the device within FHEM.
-    <br><br>
+    <p>The NETIO_4x module provides access to NETIO 4/4All/4C Networked Power Sockets via Ethernet or WiFi.
+    These power sockets can be accessed over a JSON M2M-API, after enabling it over the device's web user interface
+    (please see <a href="https://github.com/elmicro/fhem_netio_4x_pm">installation instructions</a> for details).</p>
+
     <a name="NETIO_4x_Define"></a>
-    <b>Define</b>
+    <b>Define</b><br>
     <ul>
-        <code>define &lt;name&gt; NETIO_4x &lt;model&gt; &lt;connection&gt;</code>
-        <br><br>
-        Example:<br/>
-        <code>
-          define Server_Rack NETIO_4x 4 http://192.168.1.10 <br/><br/>
-          # define a '4All' device using a custom port<br/>
-          define Server_Rack NETIO_4x 4All http://192.168.1.10:99 <br/><br/>
-          # define a '4C' device using basicAuth on standard port <br/>
-          define Server_Rack NETIO_4x 4C http://bob:123456@192.168.1.10 <br/><br/>
-          # define a '4' device using basicAuth on custom port<br/>
-          define Server_Rack NETIO_4x 4 http://bob:123456@192.168.1.10:123 <br/><br/>
-        </code>
-        <br><br>
-        <code>&lt;name&gt;</code> can be any string describing the devices name within FHEM<br/>
-        <code>&lt;model&gt;</code> can be one of the following device-models: <code>4</code>, <code>4C</code> or <code>4All</code><br/>
-        <code>&lt;connection&gt;</code> can be provided with the following format: <code>http://user:password@HOST:PORT</code> <br/>
+        <p><code>define &lt;name&gt; NETIO_4x &lt;model&gt; &lt;connection&gt;</code></p>
         <ul>
-          <li><code>https</code> is not supported</li>
-          <li><code>user:password@</code> may be ommited if no basicAuth is used</li>
-          <li><code>HOST</code> may be supplied as an IPv4-address (i.e. <code>192.168.1.123</code>) or as hostname/domain (i.e. <code>mynetio.example.domain</code>)</li>
-          <li>if <code>:PORT</code> is ommited, default port 80 is used</li>
+          <li><code>&lt;name&gt;</code> string providing a device name for FHEM</li>
+          <li><code>&lt;model&gt;</code> can be one of the following NETIO models: <code>4</code>, <code>4C</code> or <code>4All</code></li>
+          <li><code>&lt;connection&gt;</code> can be provided with the following format: <code>http://user:password@HOST:PORT</code></li>
+          <li><code>https</code> is currently not implemented</li>
+          <li><code>user:password@</code> may be omitted if basicAuth is not in use</li>
+          <li><code>HOST</code> may be supplied as an IPv4-address (e.g. <code>192.168.1.123</code>) or as hostname/domain (e.g. <code>mynetio.fritz.box</code>)</li>
+          <li>if <code>:PORT</code> if omitted, default port 80 is used</li>
         </ul>
+        <p>Examples:</p>
+        <code>
+          # define a '4' device using an IP-address:<br/>
+          define MyNetio4 NETIO_4x 4 http://192.168.1.10 <br/>
+          # define a '4C' device using a custom port:<br/>
+          define MyNetio4 NETIO_4x 4C http://192.168.178.10:99 <br/>
+          # define a '4All' device using basicAuth:<br/>
+          define MyNetio4All NETIO_4x 4All http://bob:123456@192.168.1.10 <br/>
+          # define a '4All' device using a domain name, basicAuth and a custom port:<br/>
+          define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123 <br/>
+        </code>
     </ul>
     <br>
 
     <a name="NETIO_4x_Set"></a>
     <b>Set</b><br>
     <ul>
-        <code>set &lt;name&gt; &lt;output&gt; &lt;command&gt;</code>
-        <br><br>
-        You can <i>set</i> an <code>&lt;output&gt;</code> (1-4) by submitting a <code>&lt;command&gt;</code> (0-6). All readings will be updated by the response of the device when they have changed (except the <b>OutputX_State</b> of the controlled outlet when the issued <code>&lt;command&gt;</code> was 2, 3, 5 or 6).
-        <br><br>
+        <p><code>set &lt;name&gt; &lt;output&gt; &lt;command&gt;</code></p>
+        <p>You can <i>set</i> an <code>&lt;output&gt;</code> (1-4) by submitting a <code>&lt;command&gt;</code> (0-6).
+        All readings will be updated by the response of the device when they have changed (except the <b>OutputX_State</b>
+        of the controlled outlet when the issued <code>&lt;command&gt;</code> was 2, 3, 5 or 6).
+        </p>
         available <code>&lt;command&gt;</code> values:
         <ul>
               <li><code>0</code> - switch <code>&lt;output&gt;</code> off immediately</li>
               <li><code>1</code> - switch <code>&lt;output&gt;</code> on immediately</li>
-              <li><code>2</code> - switch <code>&lt;output&gt;</code> off for the outputs <b>OutputX_Delay</b> reading (in ms) and then switch <code>&lt;output&gt;</code> on again (restart)</li>
-              <li><code>3</code> - switch <code>&lt;output&gt;</code> on for the outputs <b>OutputX_Delay</b> reading (in ms) and then switch <code>&lt;output&gt;</code> off again</li>
+              <li><code>2</code> - switch <code>&lt;output&gt;</code> off for a time specified by the output's <b>OutputX_Delay</b> reading (in ms) and then switch <code>&lt;output&gt;</code> on again</li>
+              <li><code>3</code> - switch <code>&lt;output&gt;</code> on for a time specified by the output's <b>OutputX_Delay</b> reading (in ms) and then switch <code>&lt;output&gt;</code> off again</li>
               <li><code>4</code> - toggle <code>&lt;output&gt;</code> (invert the state)</li>
               <li><code>5</code> - no change on <code>&lt;output&gt;</code> (output state is retained)</li>
-              <li><code>6</code> - ignore (state value is used to controll output) <b><i>!NOTE!</i></b> that no state value is send by the NETIO_4x module.</li>
+              <li><code>6</code> - ignore (state value is used to control output) <b><i>!NOTE!</i></b> that no state value is send by the NETIO_4x module.</li>
         </ul>
     </ul>
     <br>
@@ -267,9 +271,8 @@ NETIO_4x_Get(@)
     <a name="NETIO_4x_Get"></a>
     <b>Get</b><br>
     <ul>
-        <code>get &lt;name&gt; status</code>
-        <br><br>
-        You can <i>get</i> all the available info from the device and update the readings.
+        <p><code>get &lt;name&gt; status</code></p>
+        <p>Get all available information from the device - update the readings.</p>
     </ul>
     <br>
 
@@ -279,8 +282,8 @@ NETIO_4x_Get(@)
       <ul>
             <li><b>OutputX_State</b> - state of each output (0=off, 1=on)</li>
             <li><b>OutputX_Delay</b> - the delay which is used for short off/on (<code>&lt;command&gt;</code> 2/3) in ms for each output</li>
-      </ul><br/>
-      Netio-Devices of the <code>&lt;model&gt; 4All</code> also submit the following readings:
+      </ul>
+      <p>NETIO model <code>4All</code> additionally submits the following readings:</p>
       <ul>
             <li><b>OutputX_Current</b> - the current drawn from each outlet (in mA)</li>
             <li><b>OutputX_Energy</b> - the energy consumed by each outlet since the time given in the <b>EnergyStart</b> reading (in Wh)</li>
@@ -295,6 +298,7 @@ NETIO_4x_Get(@)
             <li><b>Voltage</b> - AC voltage within the device (in V)</li>
       </ul>
     </ul>
+    <br>
 </ul>
 
 =end html
