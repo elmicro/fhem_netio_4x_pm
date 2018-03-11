@@ -30,20 +30,25 @@ Change file privileges:
 Restart FHEM service:  
 `sudo service fhem restart`
 
-Open the web interface of your NETIO device, log in and enable JSON support:
+Open the web interface of your NETIO device, log in and enable JSON support. Setting user/password is recommended to incease security (we use the same combination `jsonuser`/`jsonpwd`here for read and write access):
 
-![Enable JSON](https://github.com/elmicro/fhem_netio_4x_pm/images/netio4-enable-json.jpg "Enable JSON")
+![Enable JSON](https://raw.githubusercontent.com/elmicro/fhem_netio_4x_pm/master/images/netio4-enable-json.jpg)
 
 Open FHEM web interface in a browser window (e.g. http://192.168.178.123:8083) and define your NETIO_4x device, e.g.:  
 `define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@192.168.178.99`
 
 Now the new device *MyNetio4All* can be found (and operated) under the *Everything* menu item.
 
-In the menu click *Save config* to preserve settings even if system is restarted.
+In the menu click *Save config* to preserve settings beyond a system restart.
 
-### Usage
+For a final test, switch on output 0 by entering the following command:  
+´set MyNetio4All 0 1´
 
-The following commands can be entered in the FHEM commandline or added to the fhem.cfg file:
+### Command Reference
+
+The following information is also available in the module's `commandref` section. Please note that the module's commandref will be added to the global commandref.html file only after an update, which can be triggered with `"/usr/bin/perl ./contrib/commandref_join.pl"`
+
+The commands listed below can be entered in the FHEM commandline or added to the fhem.cfg file.
 
 #### `define` devices
 
@@ -85,7 +90,7 @@ available `<command>` values:
   
 #### `get` output state
 
-`get <name> status`
+`get <name> state`
 
 Get all available information from the device - update the readings.
 
@@ -108,6 +113,9 @@ NETIO 4All model additionally submits the following readings:
 * **TotalLoad** - the load on all outlets (in W)
 * **Voltage** - AC voltage within the device (in V)
 
+### ToDo
+
+* add information about Tablet-UI example
 
 ### Copyright, License
 This software is Copyright (C)2018 by ELMICRO - https://elmicro.com  
