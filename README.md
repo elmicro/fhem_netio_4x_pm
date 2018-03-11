@@ -1,27 +1,30 @@
 # fhem_netio_4x_pm
 ## FHEM module to control NETIO 4x (NETIO 4, NETIO 4All, NETIO 4C) Networked Power Sockets
 
-by Oliver Schönefeld - [Elektronikladen Microcomputer](https://elmicro.com)<br>
+by Oliver Schönefeld - for [Elektronikladen Microcomputer](https://elmicro.com)  
 https://github.com/elmicro/fhem_netio_4x_pm
 
 ### Description
 
-This module demonstrates how to access the NETIO 4x series power sockets
-[NETIO 4](https://elmicro.com/de/netio.html) / [NETIO 4All](https://elmicro.com/de/netio-4all.html) /
-[NETIO 4C](https://elmicro.com/de/netio-4c.html) via the JSON part of the [M2M API](https://www.netio-products.com/en/download) of the devices within the FHEM Home Automation System
+This module for the the FHEM Home Automation System provides access to NETIO 4x series Networked Power Sockets 
+[NETIO 4](https://elmicro.com/de/netio.html) / 
+[NETIO 4All](https://elmicro.com/de/netio-4all.html) /
+[NETIO 4C](https://elmicro.com/de/netio-4c.html)
+via Ethernet or WiFi.
+These power sockets can be accessed over a JSON M2M-API, after enabling it over the device's web user interface.
 
 ### Installation
 
-FHEM must be properly installed according to https://wiki.fhem.de/wiki/Raspberry_Pi before this module can be installed.
+For the following instructions we assume that FHEM is properly installed on a Raspberry Pi as descibed at https://wiki.fhem.de/wiki/Raspberry_Pi
 
-Move `24_NETIO_4x.pm` from archive to `/opt/fhem/FHEM` without renaming the file:  
+Begin with copying `24_NETIO_4x.pm` from this repository to `/opt/fhem/FHEM` without renaming the file:  
 `sudo cp ./24_NETIO_4x.pm /opt/fhem/FHEM`
 
 Change file privileges:  
 `sudo chown fhem:dialout /opt/fhem/FHEM/24_NETIO_4x.pm`   
 `sudo chmod 0775 /opt/fhem/FHEM/24_NETIO_4x.pm`
 
-restart FHEM service:   
+Restart FHEM service:   
 `sudo service fhem restart`
 
 ### Usage
@@ -78,5 +81,5 @@ and may be freely used, modified and distributed under the terms<br>
 of the MIT License - see accompanying LICENSE.md for details
 
 ### References
-[1] FHEM Home Automation Server: (http://fhem.de/)  
-[2] NETIO products a.s.: (https://www.netio-products.com/en)
+[1] FHEM Home Automation Server: http://fhem.de/
+[2] NETIO products a.s.: https://www.netio-products.com/en
