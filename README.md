@@ -34,23 +34,24 @@ The following commands can be entered in the FHEM commandline or added to the fh
 
 `define <name> NETIO_4x <model> <connection>`
 
-* <name> string providing a device name for FHEM
-* <model> can be one of the following NETIO models: 4, 4C or 4All
-* <connection> can be provided with the following format: http://user:password@HOST:PORT
+* `<name>` string providing a device name for FHEM
+* `<model>` can be one of the following NETIO models: 4, 4C or 4All
+* `<connection>` can be provided with the following format: http://user:password@HOST:PORT
 * https is currently not implemented
 * user:password@ may be omitted if basicAuth is not in use
 * HOST may be supplied as an IPv4-address (e.g. 192.168.1.123) or as hostname/domain (e.g. mynetio.fritz.box)
 * if :PORT if omitted, default port 80 is used
 
-Examples:  
-&gt; define a '4' device using an IP-address:  
-define MyNetio4 NETIO_4x 4 http://192.168.1.10  
-&gt; define a '4C' device using a custom port:  
-define MyNetio4 NETIO_4x 4C http://192.168.178.10:99  
-&gt; define a '4All' device using basicAuth:  
-define MyNetio4All NETIO_4x 4All http://bob:123456@192.168.1.10  
-&gt; define a '4All' device using a domain name, basicAuth and a custom port:  
-define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123
+Examples:
+
+* define a '4' device using an IP-address:
+  `define MyNetio4 NETIO_4x 4 http://192.168.1.10`
+* define a '4C' device using a custom port:
+  `define MyNetio4 NETIO_4x 4C http://192.168.178.10:99`
+* define a '4All' device using basicAuth:
+  `define MyNetio4All NETIO_4x 4All http://bob:123456@192.168.1.10`
+* define a '4All' device using a domain name, basicAuth and a custom port:
+  `define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123`
 
 #### `set` output state
 
@@ -58,13 +59,13 @@ Enter in the FHEM commandline or submit via FHEM WebGUI/Tablet-UI:
 `set DeviceName output command`  
 You can `set` an `output` (`1`, `2`, `3`, `4`) by submitting a `command`. All readings will be updated by the response of the device when they have changed (except the **OutputX_State** of the controlled outlet when the issued `command` was `2`, `3`, `5` or `6`).  
 *available `command` values:*  
-  * `0` - switch `output` off immediately
-  * `1` - switch `output` on immediately
-  * `2` - switch `output` off for the outputs **OutputX_Delay** reading (in ms) and then switch `output` on again (restart)
-  * `3` - switch `output` on for the outputs **OutputX_Delay** reading (in ms) and then switch `output` off again
-  * `4` - toggle `output` (invert the state)
-  * `5` - no change on `output` (output state is retained)
-  * `6` - ignore (state value is used to controll output) ***!NOTE!*** that no state value is send by the NETIO_4x module.
+* `0` - switch `output` off immediately
+* `1` - switch `output` on immediately
+* `2` - switch `output` off for the outputs **OutputX_Delay** reading (in ms) and then switch `output` on again (restart)
+* `3` - switch `output` on for the outputs **OutputX_Delay** reading (in ms) and then switch `output` off again
+* `4` - toggle `output` (invert the state)
+* `5` - no change on `output` (output state is retained)
+* `6` - ignore (state value is used to controll output) ***!NOTE!*** that no state value is send by the NETIO_4x module.
   
 #### `get` output state
 
