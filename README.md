@@ -6,12 +6,11 @@ https://github.com/elmicro/fhem_netio_4x_pm
 
 ### Description
 
-This module for the the FHEM Home Automation System provides access to NETIO 4x series Networked Power Sockets 
-[NETIO 4](https://elmicro.com/de/netio.html) / 
+This module for the FHEM Home Automation System provides access to NETIO 4x series Networked Power Sockets
+[NETIO 4](https://elmicro.com/de/netio.html) /
 [NETIO 4All](https://elmicro.com/de/netio-4all.html) /
-[NETIO 4C](https://elmicro.com/de/netio-4c.html)
-via Ethernet or WiFi.
-These power sockets can be accessed over a JSON M2M-API, after enabling it over the device's web user interface.
+[NETIO 4C](https://elmicro.com/de/netio-4c.html).
+These Ethernet- or WiFi-connected power sockets can be accessed over a JSON M2M-API, after enabling JSON via the device's web user interface.
 
 ### Installation
 
@@ -21,10 +20,10 @@ Begin with copying `24_NETIO_4x.pm` from this repository to `/opt/fhem/FHEM` wit
 `sudo cp ./24_NETIO_4x.pm /opt/fhem/FHEM`
 
 Change file privileges:  
-`sudo chown fhem:dialout /opt/fhem/FHEM/24_NETIO_4x.pm`   
+`sudo chown fhem:dialout /opt/fhem/FHEM/24_NETIO_4x.pm`  
 `sudo chmod 0775 /opt/fhem/FHEM/24_NETIO_4x.pm`
 
-Restart FHEM service:   
+Restart FHEM service:  
 `sudo service fhem restart`
 
 ### Usage
@@ -76,8 +75,8 @@ You can `get` all the available info from the device and update the readings.
 
 
 ### Copyright, License
-This software is Copyright (C)2018 by ELMICRO - https://elmicro.com<br>
-and may be freely used, modified and distributed under the terms<br>
+This software is Copyright (C)2018 by ELMICRO - https://elmicro.com  
+and may be freely used, modified and distributed under the terms  
 of the MIT License - see accompanying LICENSE.md for details
 
 ### References
