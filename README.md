@@ -10,7 +10,7 @@ This module for the FHEM Home Automation System provides access to NETIO 4x seri
 [NETIO 4](https://elmicro.com/de/netio.html) /
 [NETIO 4All](https://elmicro.com/de/netio-4all.html) /
 [NETIO 4C](https://elmicro.com/de/netio-4c.html).
-These Ethernet- or WiFi-connected power sockets can be accessed over a JSON M2M-API, after enabling JSON via the device's web user interface.
+These Ethernet- or WiFi-connected power sockets can be accessed using a variety of protocols and M2M-API methods, including HTTP(s) CGI, XML, JSON, MQTT, SMNPv3, SIP and Modbus. JSON API is actually used in this module implementation.
 
 ### Installation
 
