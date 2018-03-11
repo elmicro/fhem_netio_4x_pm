@@ -14,7 +14,11 @@ These Ethernet- or WiFi-connected power sockets can be accessed over a JSON M2M-
 
 ### Installation
 
-For the following instructions it is assumed that FHEM is properly installed on a Raspberry Pi as descibed at https://wiki.fhem.de/wiki/Raspberry_Pi. Example file paths may differ for other environments.
+For the following instructions it is assumed that FHEM is properly installed on a Raspberry Pi as descibed at https://wiki.fhem.de/wiki/Raspberry_Pi. Example file paths etc. may differ for other environments.
+
+First, you need to know (or find out) the IP addresses of your FHEM server (i.e. Raspberry Pi) and your NETIO4 device. In these instructions we'll assume:
+* Raspi: 192.168.178.123
+* NETIO 4All: 192.168.178.99
 
 Begin with copying `24_NETIO_4x.pm` from this repository to `/opt/fhem/FHEM` without renaming the file:  
 `sudo cp ./24_NETIO_4x.pm /opt/fhem/FHEM`
@@ -26,9 +30,20 @@ Change file privileges:
 Restart FHEM service:  
 `sudo service fhem restart`
 
+Open the web interface of your NETIO device, log in and enable JSON support:
+
+![Enable JSON](https://github.com/elmicro/fhem_netio_4x_pm/images/netio4-enable-json.jpg "Enable JSON")
+
+Open FHEM web interface in a browser window (e.g. http://192.168.178.123:8083) and define your NETIO_4x device, e.g.:  
+`define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@192.168.178.99`
+
+Now the new device *MyNetio4All* can be found (and operated) under the *Everything* menu item.
+
+In the menu click *Save config* to preserve settings even if system is restarted.
+
 ### Usage
 
-The following commands can be entered in the FHEM commandline or added to the fhem.cfg file.
+The following commands can be entered in the FHEM commandline or added to the fhem.cfg file:
 
 #### `define` devices
 
@@ -79,7 +94,7 @@ Get all available information from the device - update the readings.
 * **OutputX_State** - state of each output (0=off, 1=on)  
 * **OutputX_Delay** - the delay which is used for short off/on (`command` `2` and `3`) in ms for each output  
 
-NETIO model 4All additionally submits the following readings:
+NETIO 4All model additionally submits the following readings:
 
 * **OutputX_Current** - the current drawn from each outlet (in mA)
 * **OutputX_Energy** - the energy consumed by each outlet since the time given in the **EnergyStart** reading (in Wh)
