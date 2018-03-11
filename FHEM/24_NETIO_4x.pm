@@ -271,7 +271,7 @@ NETIO_4x_Get(@)
     <a name="NETIO_4x_Get"></a>
     <b>Get</b><br>
     <ul>
-        <p><code>get &lt;name&gt; status</code></p>
+        <p><code>get &lt;name&gt; state</code></p>
         <p>Get all available information from the device - update the readings.</p>
     </ul>
     <br>
