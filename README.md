@@ -14,13 +14,15 @@ These Ethernet- or WiFi-connected power sockets can be accessed using a variety 
 
 ### Installation
 
-For the following instructions it is assumed that FHEM is properly installed on a Raspberry Pi as descibed at https://wiki.fhem.de/wiki/Raspberry_Pi. Example file paths etc. may differ for other environments.
+For the following instructions it is assumed that FHEM is properly installed on a Raspberry Pi as descibed at  
+https://wiki.fhem.de/wiki/Raspberry_Pi  
+Example file paths etc. may differ for other environments.
 
-First, you need to know (or find out) the IP addresses of your FHEM server (i.e. Raspberry Pi) and your NETIO4 device. In these instructions we'll assume:
-* Raspi: 192.168.178.123
+First, you need to know (or find out) the IP addresses of your FHEM server (i.e. Raspberry Pi) and your NETIO4 unit. In these instructions we'll assume:
+* Raspberry: 192.168.178.123
 * NETIO 4All: 192.168.178.99
 
-Begin with copying `24_NETIO_4x.pm` from this repository to `/opt/fhem/FHEM` without renaming the file:  
+Begin with copying `24_NETIO_4x.pm` from this repository to `/opt/fhem/FHEM`. On a commandline this could be done by:  
 `sudo cp ./24_NETIO_4x.pm /opt/fhem/FHEM`
 
 Change file privileges:  
@@ -34,15 +36,22 @@ Open the web interface of your NETIO device, log in and enable JSON support. Set
 
 ![Enable JSON](https://raw.githubusercontent.com/elmicro/fhem_netio_4x_pm/master/images/netio4-enable-json.jpg)
 
-Open FHEM web interface in a browser window (e.g. http://192.168.178.123:8083) and define your NETIO_4x device, e.g.:  
+Open FHEM web interface in a browser window (e.g. http://192.168.178.123:8083) and define your NETIO_4x device, e.g.:
+
 `define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@192.168.178.99`
 
-Now the new device *MyNetio4All* can be found (and operated) under the *Everything* menu item.
+Now the new device *MyNetio4All* can be found (and accessed) under the *Everything* menu item.
 
 In the menu click *Save config* to preserve settings beyond a system restart.
 
-For a final test, switch on output 0 by entering the following command:  
-´set MyNetio4All 0 1´
+For a final test, switch on the 1st output by entering the following command:
+
+`set MyNetio4All 1 1`
+
+Then, switch it off again:
+
+`set MyNetio4All 1 0`
+
 
 ### Command Reference
 
