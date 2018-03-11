@@ -14,7 +14,7 @@ These Ethernet- or WiFi-connected power sockets can be accessed over a JSON M2M-
 
 ### Installation
 
-For the following instructions we assume that FHEM is properly installed on a Raspberry Pi as descibed at https://wiki.fhem.de/wiki/Raspberry_Pi
+For the following instructions it is assumed that FHEM is properly installed on a Raspberry Pi as descibed at https://wiki.fhem.de/wiki/Raspberry_Pi. Example file paths may differ for other environments.
 
 Begin with copying `24_NETIO_4x.pm` from this repository to `/opt/fhem/FHEM` without renaming the file:  
 `sudo cp ./24_NETIO_4x.pm /opt/fhem/FHEM`
@@ -100,5 +100,5 @@ and may be freely used, modified and distributed under the terms
 of the MIT License - see accompanying LICENSE.md for details
 
 ### References
-[1] FHEM Home Automation Server: http://fhem.de/
+[1] FHEM Home Automation Server: http://fhem.de/  
 [2] NETIO products a.s.: https://www.netio-products.com/en
