@@ -55,11 +55,11 @@ Then, switch it off again:
 
 ### Command Reference
 
-The following information is also available in the module's `commandref` section. Please note that the module's commandref will be added to the global commandref.html file only after an update, which can be triggered with `"/usr/bin/perl ./contrib/commandref_join.pl"`
+The following information is also available in the module's `commandref` section. Please note that the module's commandref will be added to the global commandref.html file only after an update, which can be triggered with `"/usr/bin/perl ./contrib/commandref_join.pl"` (even from FHEM's web interface - just preserve the quotes).
 
 The commands listed below can be entered in the FHEM commandline or added to the fhem.cfg file.
 
-#### `define` devices
+> #### `define` devices
 
 `define <name> NETIO_4x <model> <connection>`
 
@@ -82,7 +82,7 @@ Examples:
 * define a '4All' device using a domain name, basicAuth and a custom port:  
   `define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123`
 
-#### `set` output state
+> #### `set` output state
 
 `set <name> <output> <command>`
 
@@ -97,13 +97,13 @@ available `<command>` values:
 * `5` - no change on `<output>` (output state is retained)
 * `6` - ignore (state value is used to control output) !NOTE! that no state value is send by the NETIO_4x module
   
-#### `get` output state
+> #### `get` output state
 
 `get <name> state`
 
 Get all available information from the device - update the readings.
 
-#### device readings
+> #### device readings
 
 * **OutputX_State** - state of each output (0=off, 1=on)  
 * **OutputX_Delay** - the delay which is used for short off/on (`command` `2` and `3`) in ms for each output  
