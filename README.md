@@ -28,18 +28,35 @@ Restart FHEM service:
 
 ### Usage
 
-* `define` devices  
-Enter in the FHEM commandline or add in fhem.cfg file:   
-`define DeviceName NETIO_4x DeviceModel ConnectionDetails`   
-  * `DeviceName` - any string defning the name of the device within FHEM
-  * `DeviceModel` - Model of NETIO socket, either `4` or `4C` or `4All`
-  * `ConnectionDetails` - format: `http://user:password@HOST:PORT`
-    * `https` connections are not supported
-    * `user:password@` may be ommitted if no basicAuth is used
-    * `HOST` may be supplied as an IPv4-address (i.e. `192.168.1.123`) or as hostname/domain (i.e. `mynetio.example.domain`)
-    * if `:PORT` is ommited, default port 80 is used
+The following commands can be entered in the FHEM commandline or added to the fhem.cfg file.
 
-* `set` output state  
+#### `define` devices
+
+`define <name> NETIO_4x <model> <connection>`
+
+* <name> string providing a device name for FHEM
+* <model> can be one of the following NETIO models: 4, 4C or 4All
+* <connection> can be provided with the following format: http://user:password@HOST:PORT
+* https is currently not implemented
+* user:password@ may be omitted if basicAuth is not in use
+* HOST may be supplied as an IPv4-address (e.g. 192.168.1.123) or as hostname/domain (e.g. mynetio.fritz.box)
+* if :PORT if omitted, default port 80 is used
+
+Examples:  
+# define a '4' device using an IP-address:  
+define MyNetio4 NETIO_4x 4 http://192.168.1.10
+
+# define a '4C' device using a custom port:  
+define MyNetio4 NETIO_4x 4C http://192.168.178.10:99
+
+# define a '4All' device using basicAuth:  
+define MyNetio4All NETIO_4x 4All http://bob:123456@192.168.1.10
+
+# define a '4All' device using a domain name, basicAuth and a custom port:  
+define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123
+
+#### `set` output state
+
 Enter in the FHEM commandline or submit via FHEM WebGUI/Tablet-UI:  
 `set DeviceName output command`  
 You can `set` an `output` (`1`, `2`, `3`, `4`) by submitting a `command`. All readings will be updated by the response of the device when they have changed (except the **OutputX_State** of the controlled outlet when the issued `command` was `2`, `3`, `5` or `6`).  
@@ -52,12 +69,14 @@ You can `set` an `output` (`1`, `2`, `3`, `4`) by submitting a `command`. All r
   * `5` - no change on `output` (output state is retained)
   * `6` - ignore (state value is used to controll output) ***!NOTE!*** that no state value is send by the NETIO_4x module.
   
-* `get` output state  
+#### `get` output state
+
 Enter in the FHEM commandline or submit via FHEM WebGUI/Tablet-UI:  
 `get DeviceName status`  
 You can `get` all the available info from the device and update the readings.
 
-* device readings
+#### device readings
+
   * **OutputX_State** - state of each output (0=off, 1=on)  
   * **OutputX_Delay** - the delay which is used for short off/on (`command` `2` and `3`) in ms for each output  
 *Netio-Devices of the `DeviceModel` `4All` also submit the following readings:*
