@@ -43,16 +43,13 @@ The following commands can be entered in the FHEM commandline or added to the fh
 * if :PORT if omitted, default port 80 is used
 
 Examples:  
-# define a '4' device using an IP-address:  
-define MyNetio4 NETIO_4x 4 http://192.168.1.10
-
-# define a '4C' device using a custom port:  
-define MyNetio4 NETIO_4x 4C http://192.168.178.10:99
-
-# define a '4All' device using basicAuth:  
-define MyNetio4All NETIO_4x 4All http://bob:123456@192.168.1.10
-
-# define a '4All' device using a domain name, basicAuth and a custom port:  
+&gt; define a '4' device using an IP-address:  
+define MyNetio4 NETIO_4x 4 http://192.168.1.10  
+&gt; define a '4C' device using a custom port:  
+define MyNetio4 NETIO_4x 4C http://192.168.178.10:99  
+&gt; define a '4All' device using basicAuth:  
+define MyNetio4All NETIO_4x 4All http://bob:123456@192.168.1.10  
+&gt; define a '4All' device using a domain name, basicAuth and a custom port:  
 define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123
 
 #### `set` output state
