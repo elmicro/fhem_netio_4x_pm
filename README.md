@@ -59,7 +59,7 @@ The following information is also available in the module's `commandref` section
 
 The commands listed below can be entered in the FHEM commandline or added to the fhem.cfg file.
 
-> #### `define` devices
+> #### Define Devices
 
 `define <name> NETIO_4x <model> <connection>`
 
@@ -82,7 +82,7 @@ Examples:
 * define a '4All' device using a domain name, basicAuth and a custom port:  
   `define MyNetio4All NETIO_4x 4All http://jsonuser:jsonpwd@mynetio.fritz.box:123`
 
-> #### `set` output state
+> #### Set Output State
 
 `set <name> <output> <command>`
 
@@ -97,13 +97,13 @@ available `<command>` values:
 * `5` - no change on `<output>` (output state is retained)
 * `6` - ignore (state value is used to control output) !NOTE! that no state value is send by the NETIO_4x module
   
-> #### `get` output state
+> #### Get Output State
 
 `get <name> state`
 
 Get all available information from the device - update the readings.
 
-> #### device readings
+> #### Device Readings
 
 * **OutputX_State** - state of each output (0=off, 1=on)  
 * **OutputX_Delay** - the delay which is used for short off/on (`command` `2` and `3`) in ms for each output  
