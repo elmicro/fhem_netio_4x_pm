@@ -124,7 +124,9 @@ NETIO 4All model additionally submits the following readings:
 
 ### ToDo
 
-* add information about Tablet-UI example
+* add information about Tablet-UI example code
+* ensure non-blocking behaviour
+* implement/test https:
 
 ### Copyright, License
 This software is Copyright (C)2018 by ELMICRO - https://elmicro.com  
@@ -133,4 +135,5 @@ of the MIT License - see accompanying LICENSE.md for details
 
 ### References
 [1] FHEM Home Automation Server: http://fhem.de/  
-[2] NETIO products a.s.: https://www.netio-products.com/en
+[2] FHEM Forum: [24_NETIO_4x.pm Module Support Thread](https://forum.fhem.de/index.php/topic,85834.0.html)  
+[3] NETIO products a.s.: https://www.netio-products.com/en
